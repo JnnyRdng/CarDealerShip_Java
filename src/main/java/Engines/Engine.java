@@ -8,4 +8,8 @@ public abstract class Engine implements IStartable {
     public Engine(String fuel) {
         this.fuel = fuel;
     }
+
+    public String getFuel() {
+        return this.fuel;
+    }
 }
