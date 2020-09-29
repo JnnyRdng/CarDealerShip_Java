@@ -40,4 +40,16 @@ public class PetrolCarTest {
     public void canStartEngine() {
         assertEquals("Brrrrrm", petrolCar.start());
     }
+
+    @Test
+    public void canDamageCar() {
+        petrolCar.damage(2000);
+        assertEquals(8000, petrolCar.getPrice(), 0.01);
+    }
+
+    @Test
+    public void canRepairCar() {
+        petrolCar.repair(1000);
+        assertEquals(11000, petrolCar.getPrice(), 0.01);
+    }
 }

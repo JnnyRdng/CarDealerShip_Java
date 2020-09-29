@@ -7,13 +7,17 @@ public class Dealership {
     private ArrayList<Vehicle> stock;
     private double till;
 
-    public Dealership() {
-        this.till = 10000;
+    public Dealership(double till) {
+        this.till = till;
         this.stock = new ArrayList<>();
     }
 
     public void addVehicle(Vehicle vehicle) {
         this.stock.add(vehicle);
+    }
+
+    public void removeVehicle(Vehicle vehicle) {
+        this.stock.remove(vehicle);
     }
 
     public ArrayList<Vehicle> getVehicles() {
@@ -30,5 +34,24 @@ public class Dealership {
 
     public double getTill() {
         return this.till;
+    }
+
+    public void buy(Vehicle vehicle) {
+        decreaseTill(vehicle.getPrice());
+        addVehicle(vehicle);
+    }
+
+    public void sell(Customer customer, Vehicle vehicle) {
+        if (customer.buy(vehicle)) {
+            removeVehicle(vehicle);
+            increaseTill(vehicle.getPrice());
+        }
+    }
+
+    public void repairVehicle(Vehicle vehicle, double amount) {
+        if (getTill() >= amount) {
+            vehicle.repair(amount);
+            decreaseTill(amount);
+        }
     }
 }

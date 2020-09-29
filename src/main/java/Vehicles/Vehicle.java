@@ -33,4 +33,12 @@ public abstract class Vehicle {
     public String start() {
         return engine.start();
     }
+
+    public void damage(double damage) {
+        this.price -= damage;
+    }
+
+    public void repair(double amount) {
+        this.price += amount;
+    }
 }
